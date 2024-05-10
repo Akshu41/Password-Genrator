@@ -79,7 +79,7 @@ const handleRangeChange = (e) => {
                         <div className="form-check">
                             <input
                                 type="checkbox"
-                                className="form-check-input"
+                                className="form-check-input w"
                                 id="specialCheck"
                                 checked={isSpecial}
                                 onChange={handleSpecialChange}
