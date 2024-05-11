@@ -6,6 +6,9 @@ function App() {
   const [isNum, setNum] = useState('');
   const [isSpecial, setSpeical] = useState('');
   const [passLength, setpassLength] = useState(8);
+  const [copyPassword, setCopyPassword] = useState();
+  const [copy, setCopy] = useState("Copy");
+
 
    const genratePassword = () => {
         const str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -32,15 +35,22 @@ function App() {
 
 const handleNumChange = (e) => {
         setNum(e.target.checked);
+        setCopy("Copy")
     };
 
 const handleSpecialChange = (e) => {
         setSpeical(e.target.checked);
+        setCopy("Copy")
     };
 
 const handleRangeChange = (e) => {
      setpassLength(parseInt(e.target.value));
+     setCopy("Copy")
 };
+const handleClickcopy = (e) => { 
+            navigator.clipboard.writeText(password);
+            setCopy("Copied!")
+}
 
   return (
     <>
@@ -54,13 +64,12 @@ const handleRangeChange = (e) => {
                             value={password}
                             readOnly
                             className="form-control"
-                            aria-label="Generated password"
-                        />
+                            aria-label="Generated password"/>
                         <button
                             className="btn btn-outline-secondary"
-                            type="button"
+                            type="button" onClick={handleClickcopy}
                         >
-                            Copy
+                            {copy}
                         </button>
                     </div>
                     <div className="form-group">
